@@ -1,45 +1,42 @@
-"use client";
+"use client"; // Required for using useEffect and useState
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase'; // Adjust this path if you moved it!
+import { supabase } from '@/lib/supabase'; // Import the client we created earlier
 
-export default function DistrictsPage() {
-  const [accommodations, setAccommodations] = useState<any[]>([]);
+export default function Home() {
+  // This state will hold our tourist places
+  const [places, setPlaces] = useState<any[]>([]);
 
-<nav className="mb-4">
-  <a href="/" className="btn btn-link">Home</a>
-  <a href="/districts" className="btn btn-link">View Accommodations</a>
-</nav>
-
+  // useEffect runs when the page loads
   useEffect(() => {
-    async function fetchAccommodations() {
-      // We are fetching from the 'accommodations' table now
-      const { data, error } = await supabase.from('accommodations').select('*');
+    async function fetchPlaces() {
+      const { data, error } = await supabase.from('places').select('*');
       
       if (error) {
         console.error("Error fetching data:", error);
       } else {
-        setAccommodations(data || []);
+        setPlaces(data || []);
       }
     }
 
-    fetchAccommodations();
+    fetchPlaces();
   }, []);
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">Places to Stay in Terengganu</h1>
+      <header className="text-center mb-5">
+        <h1 className="display-4">Explore Terengganu</h1>
+        <p className="lead">Discover the beauty of the East Coast</p>
+      </header>
+
       <div className="row">
-        {accommodations.map((item) => (
-          <div key={item.id} className="col-md-4 mb-4">
-            <div className="card shadow-sm">
+        {places.map((place) => (
+          <div key={place.id} className="col-md-4 mb-4">
+            <div className="card h-100">
               <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
-                <h6 className="card-subtitle mb-2 text-primary">{item.category}</h6>
-                <p className="card-text">
-                  <strong>District:</strong> {item.district} <br />
-                  <strong>Price:</strong> {item.price_range}
-                </p>
+                <h5 className="card-title">{place.name}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">{place.district}</h6>
+                <p className="card-text">{place.description}</p>
               </div>
             </div>
           </div>
