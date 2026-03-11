@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 
@@ -7,47 +6,66 @@ export default function Home() {
   const [places, setPlaces] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchPlaces() {
-      const { data } = await supabase.from('places').select('*');
+    async function fetchData() {
+      const { data } = await supabase.from('places').select('*').limit(6);
       setPlaces(data || []);
     }
-    fetchPlaces();
+    fetchData();
   }, []);
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-primary text-white py-5 text-center shadow-lg">
-        <div className="container">
-          <h1 className="display-3 fw-bold">Visit Terengganu</h1>
-          <p className="lead">Experience the culture, islands, and cuisine of the East Coast.</p>
-          <div className="mt-4">
-            <button className="btn btn-light btn-lg px-4 me-2">Explore Now</button>
-            <button className="btn btn-outline-light btn-lg px-4">View Map</button>
-          </div>
-        </div>
+      {/* 1. HERO BANNER */}
+      <section className="p-5 text-center bg-primary text-white rounded-bottom-4 shadow">
+        <h1 className="display-3 fw-bold">Explore Terengganu</h1>
+        <p className="lead">The Land of Hidden Gems & Crystal Clear Waters</p>
       </section>
 
-      {/* Featured Section */}
-      <main className="container my-5">
-        <h2 className="mb-4 text-center">Top Tourist Attractions</h2>
+      {/* 2. RECOMMENDED PLACES */}
+      <section className="container py-5">
+        <h2 className="mb-4 text-center">Recommended Places</h2>
         <div className="row g-4">
           {places.map((place) => (
-            <div key={place.id} className="col-md-4">
-              <div className="card h-100 border-0 shadow-sm hover-effect">
+            <div key={place.id} className="col-md-3">
+              <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <div className="text-primary mb-3">
-                    <i className="bi bi-geo-alt-fill" style={{ fontSize: '2rem' }}></i>
-                  </div>
-                  <h5 className="card-title fw-bold">{place.name}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">{place.district}</h6>
-                  <p className="card-text">{place.description}</p>
+                  <h5>{place.name}</h5>
+                  <p className="text-muted">{place.district}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-      </main>
+      </section>
+
+      {/* 3. LOCAL FOOD SECTION (Simple Layout) */}
+      <section className="bg-light py-5">
+        <div className="container text-center">
+          <h2>Local Delicacies</h2>
+          <div className="row mt-4">
+            {['Keropok Lekor', 'Nasi Dagang', 'Laksam', 'Satar'].map((food) => (
+              <div key={food} className="col-md-3">
+                <div className="p-3 border rounded bg-white shadow-sm">{food}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. UPCOMING EVENTS */}
+      <section className="container py-5">
+        <h2 className="mb-4">Upcoming Events</h2>
+        <div className="list-group">
+          <div className="list-group-item p-3">
+            <h5>Monsoon Cup</h5>
+            <p className="mb-0">World-class sailing event in Terengganu.</p>
+          </div>
+          <div className="list-group-item p-3">
+            <h5>Squid Jigging Festival</h5>
+            <p className="mb-0">Join the annual night fishing experience.</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

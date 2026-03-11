@@ -49,3 +49,11 @@ a {
   transform: translateY(-10px);
   box-shadow: 0 1rem 2rem rgba(0,0,0,0.1) !important;
 }
+
+section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.bg-light {
+  background-color: #f8f9fa !important;
+}
