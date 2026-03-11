@@ -16,27 +16,28 @@ export default function Home() {
   return (
     <div>
 {/* 1. HERO BANNER WITH VIDEO */}
-<section className="position-relative text-white text-center overflow-hidden" style={{ height: '70vh' }}>
+<section className="position-relative w-100 overflow-hidden" style={{ height: '100vh' }}>
+  
   {/* The Video Background */}
   <video 
     autoPlay 
     loop 
     muted 
     playsInline
-    className="position-absolute w-100 h-100 object-fit-cover"
+    className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
     style={{ zIndex: -1 }}
   >
     <source src="/hero-video.mp4" type="video/mp4" />
   </video>
 
-  {/* Overlay (Makes text readable) */}
-  <div className="position-absolute w-100 h-100 bg-dark opacity-50" style={{ zIndex: 0 }}></div>
+  {/* Overlay - Darkens the video so text is readable */}
+  <div className="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50" style={{ zIndex: 0 }}></div>
 
-  {/* Content */}
-  <div className="container h-100 d-flex flex-column align-items-center justify-content-center position-relative" style={{ zIndex: 1 }}>
-    <h1 className="display-2 fw-bold">Explore Terengganu</h1>
-    <p className="lead fs-3">Discover the beauty of the East Coast</p>
-    <button className="btn btn-primary btn-lg mt-3">Start Your Journey</button>
+  {/* Text Content */}
+  <div className="container h-100 d-flex flex-column align-items-center justify-content-center text-white text-center position-relative" style={{ zIndex: 1 }}>
+    <h1 className="display-1 fw-bold">Explore Terengganu</h1>
+    <p className="lead fs-2">Discover the beauty of the East Coast</p>
+    <button className="btn btn-primary btn-lg mt-4 px-5">Start Your Journey</button>
   </div>
 </section>
 
