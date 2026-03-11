@@ -40,3 +40,12 @@ a {
     color-scheme: dark;
   }
 }
+
+.hover-effect {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.1) !important;
+}
