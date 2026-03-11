@@ -15,11 +15,30 @@ export default function Home() {
 
   return (
     <div>
-      {/* 1. HERO BANNER */}
-      <section className="p-5 text-center bg-primary text-white rounded-bottom-4 shadow">
-        <h1 className="display-3 fw-bold">Explore Terengganu</h1>
-        <p className="lead">The Land of Hidden Gems & Crystal Clear Waters</p>
-      </section>
+{/* 1. HERO BANNER WITH VIDEO */}
+<section className="position-relative text-white text-center overflow-hidden" style={{ height: '70vh' }}>
+  {/* The Video Background */}
+  <video 
+    autoPlay 
+    loop 
+    muted 
+    playsInline
+    className="position-absolute w-100 h-100 object-fit-cover"
+    style={{ zIndex: -1 }}
+  >
+    <source src="/hero-video.mp4" type="video/mp4" />
+  </video>
+
+  {/* Overlay (Makes text readable) */}
+  <div className="position-absolute w-100 h-100 bg-dark opacity-50" style={{ zIndex: 0 }}></div>
+
+  {/* Content */}
+  <div className="container h-100 d-flex flex-column align-items-center justify-content-center position-relative" style={{ zIndex: 1 }}>
+    <h1 className="display-2 fw-bold">Explore Terengganu</h1>
+    <p className="lead fs-3">Discover the beauty of the East Coast</p>
+    <button className="btn btn-primary btn-lg mt-3">Start Your Journey</button>
+  </div>
+</section>
 
       {/* 2. RECOMMENDED PLACES */}
       <section className="container py-5">
