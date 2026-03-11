@@ -41,51 +41,45 @@ export default function Home() {
   </div>
 </section>
 
-      {/* 2. RECOMMENDED PLACES */}
-      <section className="container py-5">
-        <h2 className="mb-4 text-center">Recommended Places</h2>
-        <div className="row g-4">
-          {places.map((place) => (
-            <div key={place.id} className="col-md-3">
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body">
-                  <h5>{place.name}</h5>
-                  <p className="text-muted">{place.district}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+{/* 2. RECOMMENDED PLACES (Enhanced) */}
+<section className="container py-5">
+  <h2 className="mb-5 text-center fw-bold">Recommended Places</h2>
+  <div className="row g-4">
+    {places.map((place) => (
+      <div key={place.id} className="col-md-3">
+        <div className="card h-100 border-0 shadow-lg overflow-hidden" style={{ borderRadius: '20px' }}>
+          {/* Use the image_url from your database */}
+          <img src={place.image_url || 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5'} 
+               className="card-img-top" alt={place.name} style={{ height: '200px', objectFit: 'cover' }} />
+          <div className="card-body p-4">
+            <h5 className="fw-bold">{place.name}</h5>
+            <p className="text-primary small">{place.district}</p>
+          </div>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
-      {/* 3. LOCAL FOOD SECTION (Simple Layout) */}
-      <section className="bg-light py-5">
-        <div className="container text-center">
-          <h2>Local Delicacies</h2>
-          <div className="row mt-4">
-            {['Keropok Lekor', 'Nasi Dagang', 'Laksam', 'Satar'].map((food) => (
-              <div key={food} className="col-md-3">
-                <div className="p-3 border rounded bg-white shadow-sm">{food}</div>
-              </div>
-            ))}
+{/* 3. LOCAL FOOD (Card-style Grid) */}
+<section className="bg-light py-5">
+  <div className="container">
+    <h2 className="mb-5 text-center fw-bold">Local Delicacies</h2>
+    <div className="row g-4">
+      {[
+        { name: 'Keropok Lekor', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRterhmK_eQcXVKWflRQcG5GQ9r6HjhR1bQsA&s' },
+        { name: 'Nasi Dagang', img: 'https://www.hexafood.com/wp-content/uploads/2023/10/Nasi-Dagang-Rice-Cooker-Gulai-Ikan-Tongkol-Acar-Mentah-3-scaled.jpg' }
+      ].map((food) => (
+        <div key={food.name} className="col-md-6 col-lg-3">
+          <div className="card border-0 shadow-sm text-center p-3" style={{ borderRadius: '15px' }}>
+            <img src={food.img} className="rounded-circle mx-auto mb-3" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+            <h5>{food.name}</h5>
           </div>
         </div>
-      </section>
-
-      {/* 4. UPCOMING EVENTS */}
-      <section className="container py-5">
-        <h2 className="mb-4">Upcoming Events</h2>
-        <div className="list-group">
-          <div className="list-group-item p-3">
-            <h5>Monsoon Cup</h5>
-            <p className="mb-0">World-class sailing event in Terengganu.</p>
-          </div>
-          <div className="list-group-item p-3">
-            <h5>Squid Jigging Festival</h5>
-            <p className="mb-0">Join the annual night fishing experience.</p>
-          </div>
-        </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
     </div>
   );
 }
