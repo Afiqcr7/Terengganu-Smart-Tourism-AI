@@ -6,6 +6,11 @@ import { supabase } from '@/lib/supabase'; // Adjust this path if you moved it!
 export default function DistrictsPage() {
   const [accommodations, setAccommodations] = useState<any[]>([]);
 
+<nav className="mb-4">
+  <a href="/" className="btn btn-link">Home</a>
+  <a href="/districts" className="btn btn-link">View Accommodations</a>
+</nav>
+
   useEffect(() => {
     async function fetchAccommodations() {
       // We are fetching from the 'accommodations' table now
