@@ -1,19 +1,13 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase'; // Adjust this path if you moved it!
+import { supabase } from '@/lib/supabase'; 
 
 export default function DistrictsPage() {
   const [accommodations, setAccommodations] = useState<any[]>([]);
 
-<nav className="mb-4">
-  <a href="/" className="btn btn-link">Home</a>
-  <a href="/districts" className="btn btn-link">View Accommodations</a>
-</nav>
-
   useEffect(() => {
     async function fetchAccommodations() {
-      // We are fetching from the 'accommodations' table now
       const { data, error } = await supabase.from('accommodations').select('*');
       
       if (error) {
@@ -28,7 +22,14 @@ export default function DistrictsPage() {
 
   return (
     <div className="container mt-5">
+      {/* NAVIGATION GOES HERE, INSIDE THE RETURN STATEMENT */}
+      <nav className="mb-4">
+        <a href="/" className="btn btn-outline-primary me-2">Home</a>
+        <a href="/districts" className="btn btn-primary">View Accommodations</a>
+      </nav>
+
       <h1 className="mb-4">Places to Stay in Terengganu</h1>
+      
       <div className="row">
         {accommodations.map((item) => (
           <div key={item.id} className="col-md-4 mb-4">
