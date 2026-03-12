@@ -78,21 +78,6 @@ export default function Home() {
         </div>
       ))}
     </div>
-    {/* 4. DISTRICT SELECTOR SECTION */}
-<section className="container py-5 text-center">
-  <h2 className="mb-4 fw-bold">Explore by District</h2>
-  <p className="mb-5 text-muted">Select a district to see local attractions, food, and stays.</p>
-  
-  <div className="row g-3 justify-content-center">
-    {['Kuala Terengganu', 'Besut', 'Setiu', 'Marang', 'Dungun', 'Kemaman', 'Hulu Terengganu'].map((district) => (
-      <div key={district} className="col-md-3">
-        <a href={`/districts/${district}`} className="btn btn-outline-primary w-100 py-3 fw-bold shadow-sm">
-          {district}
-        </a>
-      </div>
-    ))}
-  </div>
-</section>
   </div>
 </section>
     </div>
