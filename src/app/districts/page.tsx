@@ -1,22 +1,40 @@
 import Link from 'next/link';
 
 export default function ExploreDistricts() {
-  const districts = ['Kuala Terengganu', 'Besut', 'Setiu', 'Marang', 'Dungun', 'Kemaman', 'Hulu Terengganu'];
+  // 1. Put your data array HERE, inside the component function
+  const districts = [
+    { name: 'Kuala Terengganu', img: '/kt-image.jpg' },
+    { name: 'Besut', img: '/besut-image.jpg' },
+    { name: 'Setiu', img: '/setiu-image.jpg' },
+    { name: 'Marang', img: '/marang-image.jpg' },
+    { name: 'Dungun', img: '/dungun-image.jpg' },
+    { name: 'Kemaman', img: '/kemaman-image.jpg' },
+    { name: 'Hulu Terengganu', img: '/hulu-terengganu-image.jpg' },
+  ];
 
   return (
-    <div className="container py-5">
-      <h1 className="text-center mb-5 fw-bold">Explore Terengganu by District</h1>
-      <div className="row g-4">
-        {districts.map((d) => (
-          <div key={d} className="col-md-4">
-            <Link href={`/districts/${d}`} className="text-decoration-none">
-              <div className="card h-100 shadow-sm border-0 hover-effect p-4 text-center">
-                <i className="bi bi-map text-primary" style={{ fontSize: '3rem' }}></i>
-                <h4 className="mt-3">{d}</h4>
-              </div>
-            </Link>
-          </div>
-        ))}
+    <div className="bg-light min-vh-100 pb-5">
+      <div className="bg-primary text-white py-5 text-center mb-5">
+        <h1 className="fw-bold">Explore Our Districts</h1>
+      </div>
+
+      <div className="container">
+        <div className="row g-4">
+          {/* 2. Map through the array of objects */}
+          {districts.map((d) => (
+            <div key={d.name} className="col-md-4 col-lg-3">
+              <Link href={`/districts/${d.name}`} className="text-decoration-none">
+                <div className="card h-100 border-0 shadow-sm hover-effect overflow-hidden rounded-4">
+                  {/* Using the image from your array */}
+                  <img src={d.img} alt={d.name} className="card-img-top" style={{ height: '180px', objectFit: 'cover' }} />
+                  <div className="card-body p-3 text-center">
+                    <h5 className="fw-bold text-dark">{d.name}</h5>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

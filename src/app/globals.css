@@ -60,3 +60,11 @@ section {
 .bg-light {
   background-color: #f8f9fa !important;
 }
+
+.hover-effect {
+  transition: all 0.3s ease;
+}
+.hover-effect:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+}
