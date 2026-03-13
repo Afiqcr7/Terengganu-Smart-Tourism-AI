@@ -78,6 +78,27 @@ export default function Home() {
         </div>
       ))}
     </div>
+    {/* 5. AI SMART RECOMMENDATION SECTION */}
+<section className="py-5 bg-dark text-white text-center">
+  <div className="container">
+    <h2 className="mb-4">AI Travel Assistant</h2>
+    <p className="lead mb-4">Upload a photo of your dream vacation, and we'll match it to a spot in Terengganu!</p>
+    
+    <div className="card p-4 w-50 mx-auto bg-light text-dark">
+      <input 
+        type="file" 
+        onChange={(e) => {
+          // You can create a function to handle this directly here!
+          // For now, let's just make this link to the AI page
+        }} 
+        className="form-control mb-3" 
+      />
+      <a href="/ai-search" className="btn btn-primary btn-lg">
+        Try AI Image Search
+      </a>
+    </div>
+  </div>
+</section>
   </div>
 </section>
     </div>

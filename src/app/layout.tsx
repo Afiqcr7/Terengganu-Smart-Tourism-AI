@@ -25,18 +25,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         
         {/* Navbar is now inside the return block */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-          <div className="container">
-            <a className="navbar-brand fw-bold" href="/">Terengganu</a>
-            <div className="navbar-nav flex-row">
-              <a className="nav-link mx-2" href="/">Home</a>
-              <a className="nav-link mx-2" href="/districts">Districts</a>
-              <a className="nav-link mx-2" href="/food">Food</a>
-              <a className="nav-link mx-2" href="/accommodation">Stay</a>
-              <a className="nav-link mx-2" href="/events">Events</a>
-            </div>
-          </div>
-        </nav>
+<nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div className="container">
+    <a className="navbar-brand fw-bold" href="/">Terengganu</a>
+    
+    {/* The links are inside this div */}
+    <div className="navbar-nav flex-row">
+      <a className="nav-link mx-2" href="/">Home</a>
+      <a className="nav-link mx-2" href="/districts">Districts</a>
+      <a className="nav-link mx-2" href="/food">Food</a>
+      <a className="nav-link mx-2" href="/accommodation">Stay</a>
+      <a className="nav-link mx-2" href="/events">Events</a>
+      
+      {/* ADDED AI SEARCH LINK HERE */}
+      <a className="nav-link mx-2 fw-bold text-primary" href="/ai-search">AI Search</a>
+    </div>
+  </div>
+</nav>
 
         {/* This is where your page content appears */}
         <main>{children}</main>
