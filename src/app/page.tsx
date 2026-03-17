@@ -41,6 +41,35 @@ export default function Home() {
   </div>
 </section>
 
+{/* 1. HERO BANNER (Top) */}
+<section className="position-relative w-100 vh-100 overflow-hidden">
+  <video autoPlay loop muted playsInline className="position-absolute w-100 h-100 object-fit-cover" style={{ zIndex: -1 }}>
+    <source src="/hero-video.mp4" type="video/mp4" />
+  </video>
+  <div className="container h-100 d-flex align-items-center justify-content-center text-white text-center">
+    <h1 className="display-1 fw-bold">Explore Terengganu</h1>
+  </div>
+</section>
+
+{/* 2. AI TRAVEL ASSISTANT (Moved to top for visibility) */}
+<section className="py-5 bg-primary text-white">
+  <div className="container text-center">
+    <h2 className="display-5 fw-bold mb-3">AI Travel Assistant</h2>
+    <p className="lead mb-4">Upload a photo, and let our AI curate your perfect Terengganu trip.</p>
+    
+    <div className="card shadow-lg p-4 mx-auto rounded-4" style={{ maxWidth: '600px' }}>
+      <div className="card-body">
+        <a href="/ai-search" className="btn btn-primary btn-lg w-100 fw-bold py-3 shadow-sm">
+          <i className="bi bi-camera-fill me-2"></i> Launch AI Scanner
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 3. RECOMMENDED PLACES & OTHERS ... */}
+
+
 {/* 2. RECOMMENDED PLACES (Enhanced) */}
 <section className="container py-5">
   <h2 className="mb-5 text-center fw-bold">Recommended Places</h2>
@@ -78,27 +107,7 @@ export default function Home() {
         </div>
       ))}
     </div>
-    {/* 5. AI SMART RECOMMENDATION SECTION */}
-<section className="py-5 bg-dark text-white text-center">
-  <div className="container">
-    <h2 className="mb-4">AI Travel Assistant</h2>
-    <p className="lead mb-4">Upload a photo of your dream vacation, and we'll match it to a spot in Terengganu!</p>
-    
-    <div className="card p-4 w-50 mx-auto bg-light text-dark">
-      <input 
-        type="file" 
-        onChange={(e) => {
-          // You can create a function to handle this directly here!
-          // For now, let's just make this link to the AI page
-        }} 
-        className="form-control mb-3" 
-      />
-      <a href="/ai-search" className="btn btn-primary btn-lg">
-        Try AI Image Search
-      </a>
-    </div>
-  </div>
-</section>
+
   </div>
 </section>
     </div>
