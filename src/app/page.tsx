@@ -14,8 +14,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      
+    <div> 
 {/* 1. HERO BANNER (Top) */}
 <section className="position-relative w-100 vh-100 overflow-hidden">
   <video autoPlay loop muted playsInline className="position-absolute w-100 h-100 object-fit-cover" style={{ zIndex: -1 }}>
