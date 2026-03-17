@@ -42,9 +42,6 @@ export default function Home() {
 </section>
 
 {/* 3. RECOMMENDED PLACES & OTHERS ... */}
-
-
-{/* 2. RECOMMENDED PLACES (Enhanced) */}
 <section className="container py-5">
   <h2 className="mb-5 text-center fw-bold">Recommended Places</h2>
   <div className="row g-4">
@@ -64,7 +61,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* 3. LOCAL FOOD (Card-style Grid) */}
+{/* 4. LOCAL FOOD (Card-style Grid) */}
 <section className="bg-light py-5">
   <div className="container">
     <h2 className="mb-5 text-center fw-bold">Local Delicacies</h2>
