@@ -14,19 +14,41 @@ export default function AISearch() {
     }
   };
 
+// REPLACE YOUR OLD handleUpload WITH THIS:
   const handleUpload = async () => {
     if (!file) return;
     setLoading(true);
+    setResult(null); // Clear previous result
+    
     const formData = new FormData();
     formData.append('file', file);
 
-    const res = await fetch('/api/classify', { method: 'POST', body: formData });
-    const data = await res.json();
-    
-    // Check if the AI sees water/beach/sea
-    const label = data[0]?.label || "General";
-    setResult(label);
-    setLoading(false);
+    try {
+      // Make sure this matches the filename of your API route (api/ai-recommend)
+      const res = await fetch('/api/ai-recommend', { method: 'POST', body: formData });
+      const data = await res.json();
+      
+      // data.label comes from your API route
+      const aiLabel = (data.label || "").toLowerCase(); 
+      
+      let recommendation = "";
+      if (aiLabel.includes("beach") || aiLabel.includes("sea") || aiLabel.includes("water") || aiLabel.includes("shore")) {
+        recommendation = "Pulau Redang & Pulau Perhentian (Beautiful Beaches!)";
+      } else if (aiLabel.includes("lake") || aiLabel.includes("mountain") || aiLabel.includes("forest")) {
+        recommendation = "Tasik Kenyir (Nature & Adventure)";
+      } else if (aiLabel.includes("building") || aiLabel.includes("mosque") || aiLabel.includes("church")) {
+        recommendation = "Masjid Kristal & Kuala Terengganu City";
+      } else {
+        recommendation = "Explore the beauty of Terengganu Culture!";
+      }
+
+      setResult(recommendation);
+    } catch (error) {
+      console.error("AI Error:", error);
+      setResult("Could not analyze image. Try another one!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

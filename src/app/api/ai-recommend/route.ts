@@ -14,11 +14,11 @@ export async function POST(req: Request) {
     }
   );
 
-  const result = await response.json();
+// ... inside route.ts
+const result = await response.json();
 
-  // 2. The AI returns an array, we grab the top result (index 0)
-  // We return it in a clean format that your frontend can easily read
-  const topResult = result[0]?.label || "Terengganu Landscape";
+// Make sure we are sending back a clean label string
+const label = result[0]?.label || "Unknown";
 
-  return NextResponse.json({ label: topResult });
+return NextResponse.json({ label: label });
 }
