@@ -5,21 +5,38 @@ import { supabase } from '@/lib/supabase';
 export default function AccommodationPage() {
   const [stays, setStays] = useState<any[]>([]);
   const [filter, setFilter] = useState('All');
+  const [userRole, setUserRole] = useState(''); // Added this state
 
   useEffect(() => {
-    async function fetchStays() {
+    async function fetchData() {
+      // Fetch stays
       const { data } = await supabase.from('accommodations').select('*');
       setStays(data || []);
+
+      // Check if user is a Seller
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // user_metadata is where the role is saved during signup
+        setUserRole(user.user_metadata.role || '');
+      }
     }
-    fetchStays();
+    fetchData();
   }, []);
 
-  // Filter logic
   const filteredStays = filter === 'All' ? stays : stays.filter(s => s.category === filter);
 
   return (
     <div className="container py-5">
-      <h1 className="text-center fw-bold mb-4">Where to Stay</h1>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1 className="fw-bold">Where to Stay</h1>
+        
+        {/* ONLY SHOWS IF USER IS SELLER */}
+        {userRole === 'Seller' && (
+          <a href="/accommodation/add" className="btn btn-success shadow-sm">
+            <i className="bi bi-plus-circle me-2"></i> Add New Listing
+          </a>
+        )}
+      </div>
       
       {/* Filter Buttons */}
       <div className="d-flex justify-content-center gap-2 mb-5">
