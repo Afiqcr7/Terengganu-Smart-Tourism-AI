@@ -7,15 +7,24 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Tourist'); // Default role
 
-  const handleSignUp = async () => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { role } } // This saves Tourist or Seller to the user profile
-    });
-    if (error) alert(error.message);
-    else alert('Check your email for confirmation!');
-  };
+const handleSignUp = async () => {
+  const { data, error } = await supabase.auth.signUp({
+    email: email.trim(),
+    password: password,
+    options: { 
+      data: { role: role } // Ensure role is saved
+    }
+  });
+
+  if (error) {
+    alert("Error: " + error.message);
+  } else {
+    // UPDATED MESSAGE:
+    alert("Success! You can now log in.");
+    // Automatically redirect them to the home page or login page
+    window.location.href = '/login'; 
+  }
+};
 
   return (
     <div className="container py-5" style={{ maxWidth: '400px' }}>
