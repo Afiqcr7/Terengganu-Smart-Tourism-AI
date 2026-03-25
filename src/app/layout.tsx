@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <a className="nav-link mx-2" href="/food">Food</a>
       <a className="nav-link mx-2" href="/accommodation">Stay</a>
       <a className="nav-link mx-2" href="/events">Events</a>
+      <a className="nav-link mx-2 fw-bold text-success" href="/login">Login</a>
       
       {/* ADDED AI SEARCH LINK HERE */}
       <a className="nav-link mx-2 fw-bold text-primary" href="/ai-search">AI Search</a>
