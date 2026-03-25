@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "google/gemini-2.0-flash-lite-preview:free", // A very fast, free vision model
+      model: "google/gemma-3-27b-it:free", // A very fast, free vision model
       messages: [
         {
           role: "user",
