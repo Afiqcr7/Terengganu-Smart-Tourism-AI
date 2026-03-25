@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@openrouter/sdk": "^0.9.11",
     "@supabase/supabase-js": "^2.99.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
