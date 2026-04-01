@@ -6,23 +6,26 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Tourist');
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Sign Up
+  const [name, setName] = useState(''); // 1. Added name state
+  const [isLogin, setIsLogin] = useState(true);
 
   const handleAction = async () => {
     if (isLogin) {
       // LOGIN LOGIC
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
       if (error) alert(error.message);
-      else window.location.href = '/';
+      else window.location.href = '/dashboard'; // Redirect to dashboard
     } else {
       // SIGN UP LOGIC
       const { error } = await supabase.auth.signUp({
-        email,
+        email: email.trim(),
         password,
-        options: { data: { role } }
+        options: { 
+          data: { role, full_name: name } // 3. Save name here
+        }
       });
       if (error) alert(error.message);
-      else alert("Account created! You can now login.");
+      else alert("Account created! Please log in now.");
     }
   };
 
@@ -31,6 +34,12 @@ export default function Login() {
       <h2 className="mb-4">{isLogin ? "Login" : "Sign Up"}</h2>
       
       <input className="form-control mb-3" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      
+      {/* 2. Added Full Name input (Only shows on Sign Up) */}
+      {!isLogin && (
+        <input className="form-control mb-3" placeholder="Full Name" onChange={(e) => setName(e.target.value)} />
+      )}
+
       <input className="form-control mb-3" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
       
       {!isLogin && (
